@@ -146,7 +146,7 @@ export const businesses = [
     slug: "shallot",
     short: "Shallot farming in Brebes",
     tag: "Early stage",
-    text: "Shallot farming, and occasionally rice, as a family business in Brebes, Central Java.",
+    text: "Shallot farming, and occasionally rice, as a family business in Brebes, Central Java. Still run conventionally, the traditional way.",
     icon: "sprout",
   },
   {
@@ -154,7 +154,7 @@ export const businesses = [
     slug: "hens",
     short: "Layer chicken farming",
     tag: "Early stage",
-    text: "A family layer chicken business in Brebes, Central Java, with Afif Firmansyah as the seller of the layer chickens.",
+    text: "A family layer chicken business in Brebes, Central Java, with Afif Firmansyah as the seller of the layer chickens. Run conventionally today. Automation and digital products are only a possible future step, mainly to help with marketing and reach more people.",
     icon: "egg",
   },
 ];
@@ -194,11 +194,15 @@ export const faqs = [
   },
   {
     q: "What are Fivers' businesses?",
-    a: "Two early-stage family businesses in Brebes, Central Java: agriculture (shallot farming, and occasionally rice) and layer chicken.",
+    a: "Two early-stage family businesses in Brebes, Central Java: agriculture (shallot farming, and occasionally rice) and layer chicken. Both are run conventionally today. For the layer chicken business, automation and digital products are only a possible future step, mainly for marketing.",
   },
   {
     q: "How does Fivers use AI?",
     a: "AI agents support research, analysis, building, and operations within defined permissions. Humans set direction, make decisions, and approve high-risk actions.",
+  },
+  {
+    q: "Do Fivers' farm and coop use AI?",
+    a: "No. The shallot and rice farming and the layer chicken business are run conventionally today. Any automation or digital product for the layer chicken business is a possible future step, mainly to help with marketing and reach more people, and it is not live.",
   },
   {
     q: "What is an AI-native venture studio?",
@@ -228,7 +232,7 @@ export const principles = [
 export const story = [
   { era: "Where it started", title: "Tinkering with AI", text: "Fivers began as curiosity: playing with AI and trying to turn everyday activities into products." },
   { era: "What it became", title: "An AI office", text: "That grew into the idea of an AI office, a platform where any need, whether entertainment or development, can produce something. Fivers Digital Office is that platform and the main product." },
-  { era: "What comes from it", title: "Derivative products and real businesses", text: "Derivative products are developed from the platform, such as Veluna, Financial Tracker, LinguaFlow, and FiveClip. Alongside software, Fivers is rooted in family businesses in Brebes, Central Java." },
+  { era: "What comes from it", title: "Derivative products and real businesses", text: "Derivative products are developed from the platform, such as Veluna, Financial Tracker, LinguaFlow, and FiveClip. Alongside software, Fivers is rooted in family businesses in Brebes, Central Java, which are still run conventionally." },
 ];
 
 export const pillars = [

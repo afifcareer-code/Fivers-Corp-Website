@@ -166,7 +166,7 @@ const journeySteps = [
   { n: 1, t: "Tinkering with AI", d: "It began with curiosity: playing with AI." },
   { n: 2, t: "Into products", d: "Everyday activities become products." },
   { n: 3, t: "The AI office", d: "Fivers Digital Office: the main product, where derivative products are born.", main: true },
-  { n: 4, t: "Field & coop", d: "Family businesses in Brebes, Central Java.", real: true },
+  { n: 4, t: "Field & coop", d: "Conventional family businesses in Brebes, Central Java.", real: true },
 ];
 
 function curve(pts) {

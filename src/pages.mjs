@@ -133,7 +133,7 @@ function home() {
   const real = wrap(
     `<div class="side-layout">
       <div class="side-head">${LabelLine("Our Businesses")}<h2 class="title" id="h-biz">Beyond Software. <em>Into the Real World.</em></h2>
-        <p class="muted">Fivers also runs real-world businesses in Brebes, Central Java, from farming to layer chickens.</p>
+        <p class="muted">Fivers also runs real-world businesses in Brebes, Central Java, from farming to layer chickens. They are run conventionally today.</p>
         <a class="btn primary" href="/businesses/">Explore Businesses &rarr;</a></div>
       <div class="photo-grid">${BizPhoto(businesses[0], iconSvg.sprout)}${BizPhoto(businesses[1], iconSvg.egg)}</div>
     </div>`, "", "h-biz"
@@ -301,8 +301,8 @@ function businessesPage() {
   const cards = wrap(
     `${SectionHeader({ eyebrow: "Today", warm: true, title: "Two family businesses, as they are.", id: "h-two" })}
     <div class="bizpanels">
-      ${panel(businesses[0], ["Shallot", "Occasionally rice", "Family business"], false)}
-      ${panel(businesses[1], ["Layer chicken", "Seller: Afif Firmansyah", "Family business"], true)}
+      ${panel(businesses[0], ["Shallot", "Occasionally rice", "Conventional", "Family business"], false)}
+      ${panel(businesses[1], ["Layer chicken", "Seller: Afif Firmansyah", "Conventional today", "Digital: a future plan"], true)}
     </div>
     ${LocationStrip(location)}`,
     "biz", "h-two"
@@ -312,7 +312,8 @@ function businessesPage() {
     `<div class="split">
       <div>${SectionHeader({ eyebrow: "Why it belongs here", title: "Fivers is not only software.", id: "h-why",
         text: "Real-world businesses keep the company tied to real customers, real costs, and real operations, not only to screens and dashboards." })}</div>
-      <p class="honest"><strong>Early stage, shown honestly.</strong> We do not publish scale, revenue, or production numbers here. These businesses are just getting started, and we show them that way.</p>
+      <div class="honest"><p><strong>Early stage, shown honestly.</strong> We do not publish scale, revenue, or production numbers here. These businesses are just getting started, and we show them that way.</p>
+      <p><strong>Conventional today.</strong> Fivers does not claim AI or automation on the farm or in the coop. For the layer chicken business, automation and digital products are a possible future step, mainly as marketing to reach more people.</p></div>
     </div>`,
     "", "h-why"
   );
@@ -331,7 +332,7 @@ function businessesPage() {
     meta: {
       title: "Fivers Businesses — Beyond Software",
       description:
-        "Fivers Corp also operates early-stage family businesses in Brebes, Central Java: agriculture (shallot, occasionally rice) and layer chicken.",
+        "Fivers Corp also operates early-stage family businesses in Brebes, Central Java: conventional agriculture (shallot, occasionally rice) and layer chicken.",
     },
     body: [hero, cards, why, cta].join("\n"),
     jsonld: graph(crumbLd("Businesses", "/businesses/")),
