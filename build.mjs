@@ -39,7 +39,7 @@ ${urls}
 writeFileSync(out("robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
 console.log("wrote sitemap.xml, robots.txt");
 
-for (const f of ["favicon.svg", "og-image.png"]) {
+for (const f of ["favicon.svg", "og-image.png", "founder-mark.jpg"]) {
   if (existsSync(out(`public/${f}`))) copyFileSync(out(`public/${f}`), out(f));
 }
 

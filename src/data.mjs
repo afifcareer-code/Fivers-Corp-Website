@@ -198,3 +198,26 @@ export const faqs = [
     a: "No. Some ideas become products, some become experiments, and some should never be built. Discovery exists to find out which is which.",
   },
 ];
+
+export const principles = [
+  { n: "01", title: "Look before building.", text: "Investigate the problem, the user, and the market before any significant resource is committed." },
+  { n: "02", title: "Decide on evidence.", text: "Every opportunity ends in an explicit decision: build, iterate, experiment, partner, park, or kill." },
+  { n: "03", title: "Humans stay accountable.", text: "AI agents research, build, and operate within defined permissions. Direction, capital, and high-risk decisions stay human." },
+  { n: "04", title: "Be honest about stage.", text: "Live, building, and experiment mean what they say. Early-stage businesses are shown as early stage." },
+];
+
+export const story = [
+  { era: "Where it started", title: "IT and AI-assisted office work", text: "Fivers began on the technology side: systems, product thinking, and AI agents that support day-to-day office work." },
+  { era: "What it became", title: "Products and experiments", text: "From that base came digital products such as Veluna and Financial Tracker, with more in development and in testing." },
+  { era: "Where it reaches", title: "Real-world businesses", text: "Alongside software, Fivers is rooted in family businesses in Brebes, Central Java: agriculture and layer chicken." },
+];
+
+export const pillars = [
+  { n: "01", key: "Discover", tone: "lime", text: "Find opportunities worth pursuing. Investigate the problem, the user, and the market, and challenge assumptions early.", chips: ["Research", "Validation", "Decision"] },
+  { n: "02", key: "Build", tone: "text", text: "Turn validated opportunities into products and experiments, with AI agents working alongside the people who set direction.", chips: ["Products", "Experiments", "AI-assisted"] },
+  { n: "03", key: "Operate", tone: "gold", text: "Run digital products and real-world businesses over time, from software in production to a farm in Brebes.", chips: ["Digital", "Real-world", "Day to day"] },
+];
+
+export const marquee = ["Digital products", "Experiments", "Real-world businesses", "AI-native", "Human-led", "Brebes, Central Java", "Discover", "Build", "Operate"];
+
+export const founderValues = ["Integrity", "Direction", "Impact"];

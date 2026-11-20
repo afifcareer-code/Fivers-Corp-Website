@@ -1,4 +1,5 @@
 import { site, nav, contact, statusInfo } from "./data.mjs";
+import { Glyph } from "./visuals.mjs";
 
 export const esc = (s) =>
   String(s)
@@ -151,7 +152,8 @@ export function StatusBadge(status) {
 
 export function VentureCard(v) {
   return `<article class="card venture">
-  <div class="card-top">${StatusBadge(v.status)}<span class="cat">${esc(v.category)}</span></div>
+  <div class="card-top">${Glyph(v.name)}${StatusBadge(v.status)}</div>
+  <span class="cat">${esc(v.category)}</span>
   <h3>${esc(v.name)}</h3>
   <p>${esc(v.description)}</p>
   ${v.note ? `<p class="note">${esc(v.note)}</p>` : ""}
