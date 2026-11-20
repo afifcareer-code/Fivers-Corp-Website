@@ -82,14 +82,14 @@ export function Navbar(currentPath) {
     .join("");
   return `<header class="site-header">
   <div class="wrap bar">
-    <a class="brand" href="/" aria-label="Fivers Corp, home"><span class="mark" aria-hidden="true">F</span><span>Fivers</span></a>
+    <a class="brand" href="/" aria-label="Fivers Corp, home"><span class="mark" aria-hidden="true"><svg viewBox="0 0 32 32" width="30" height="30"><path d="M5 27C5 14 12 6 26 5c0 14-7 21-21 22z" fill="currentColor"/><path d="M12 28c0-6 3-10 11-11 0 7-4 10-11 11z" fill="currentColor" opacity=".6"/></svg></span><span>Fivers</span></a>
     <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-panel">
       <span class="sr">Menu</span>
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <div class="nav-panel" id="nav-panel" data-nav-panel>
       <nav aria-label="Primary"><ul>${links}</ul></nav>
-      <a class="cta" href="${contact.href}">${esc(contact.label)}</a>
+      <a class="cta" href="${contact.href}">${esc(contact.label)} <span aria-hidden="true">&rarr;</span></a>
     </div>
   </div>
 </header>`;
@@ -101,7 +101,7 @@ export function Footer() {
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <a class="brand" href="/" aria-label="Fivers Corp, home"><span class="mark" aria-hidden="true">F</span><span>Fivers</span></a>
+        <a class="brand" href="/" aria-label="Fivers Corp, home"><span class="mark" aria-hidden="true"><svg viewBox="0 0 32 32" width="30" height="30"><path d="M5 27C5 14 12 6 26 5c0 14-7 21-21 22z" fill="currentColor"/><path d="M12 28c0-6 3-10 11-11 0 7-4 10-11 11z" fill="currentColor" opacity=".6"/></svg></span><span>Fivers</span></a>
         <p class="muted foot-tag">${esc(site.tagline)} An AI-native venture studio.</p>
       </div>
       <nav class="foot-nav" aria-label="Footer">${links}<a href="${contact.href}">${esc(contact.label)}</a></nav>
@@ -116,20 +116,21 @@ export function Footer() {
 
 /* ---------- Building blocks ---------- */
 
-export function PageHero({ eyebrow, title, titleHtml, subtitle, lead, ctas = [], aside = "" }) {
+export function PageHero({ eyebrow, title, titleHtml, subtitle, lead, lead2, ctas = [], aside = "", cls = "" }) {
   const h1 = titleHtml ?? esc(title);
   const buttons = ctas.length
     ? `<div class="btns">${ctas
         .map((c) => `<a class="btn${c.primary ? " primary" : ""}" href="${c.href}">${esc(c.label)}</a>`)
         .join("")}</div>`
     : "";
-  return `<section class="hero">
+  return `<section class="hero${cls ? " " + cls : ""}">
   <div class="wrap hero-grid">
     <div class="hero-copy">
       ${eyebrow ? `<span class="eyebrow">${esc(eyebrow)}</span>` : ""}
       <h1>${h1}</h1>
       ${subtitle ? `<p class="hero-sub">${esc(subtitle)}</p>` : ""}
       ${lead ? `<p class="lead">${esc(lead)}</p>` : ""}
+      ${lead2 ? `<p class="lead2">${esc(lead2)}</p>` : ""}
       ${buttons}
     </div>
     ${aside}
@@ -152,7 +153,7 @@ export function StatusBadge(status) {
 
 export function VentureCard(v) {
   return `<article class="card venture">
-  <div class="card-top">${Glyph(v.name)}${StatusBadge(v.status)}</div>
+  <div class="card-top">${Glyph(v.name)}<span class="badges">${v.flagship ? '<span class="flag">Main product</span>' : ""}${StatusBadge(v.status)}</span></div>
   <span class="cat">${esc(v.category)}</span>
   <h3>${esc(v.name)}</h3>
   <p>${esc(v.description)}</p>

@@ -6,6 +6,16 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>__SITE_URL__/about/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>__SITE_URL__/technology/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>__SITE_URL__/discovery/</loc>
     <lastmod>2026-11-20</lastmod>
     <priority>0.8</priority>
@@ -17,11 +27,6 @@
   </url>
   <url>
     <loc>__SITE_URL__/businesses/</loc>
-    <lastmod>2026-11-20</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>__SITE_URL__/about/</loc>
     <lastmod>2026-11-20</lastmod>
     <priority>0.8</priority>
   </url>

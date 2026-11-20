@@ -130,3 +130,107 @@ export function FounderCard({ name, title, url, values, text }) {
   </div>
 </div>`;
 }
+
+/* ===== reference-style home visuals ===== */
+import { existsSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const pubDir = join(dirname(fileURLToPath(import.meta.url)), "..", "public");
+
+const hen = (x, y, s = 1, body = "#b8742f", wing = "#8a4f1d") =>
+  `<g transform="translate(${x} ${y}) scale(${s})">
+  <path d="M42 -12q26 -30 14 -52q-4 20 -30 26z" fill="${wing}"/>
+  <ellipse cx="0" cy="0" rx="48" ry="34" fill="${body}"/>
+  <path d="M-30 6q22 24 58 -2q-20 30 -58 2z" fill="#d49a58" opacity=".7"/>
+  <ellipse cx="6" cy="-2" rx="26" ry="16" fill="${wing}" opacity=".85"/>
+  <path d="M-36 -14q-8 -24 -4 -34l14 4q-6 14 0 28z" fill="${body}"/>
+  <circle cx="-42" cy="-36" r="14" fill="#c98a46"/>
+  <circle cx="-48" cy="-52" r="5" fill="#d23b3b"/><circle cx="-41" cy="-54" r="5" fill="#d23b3b"/><circle cx="-35" cy="-50" r="4" fill="#d23b3b"/>
+  <path d="M-55 -36l-14 4l14 6z" fill="#F2B84B"/>
+  <circle cx="-46" cy="-39" r="2.4" fill="#111"/>
+  <path d="M-52 -26q-3 10 3 12q4 -6 0 -12z" fill="#d23b3b"/>
+  <path d="M-8 32v22M10 32v22M-14 54h12M4 54h12" stroke="#F2B84B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+</g>`;
+
+function faceGrid(p, cols, rows, cls) {
+  const lerp = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+  const [tl, tr, br, bl] = p;
+  let d = "";
+  for (let i = 1; i < cols; i++) { const t = i / cols; const a = lerp(tl, tr, t), b = lerp(bl, br, t); d += `M${a[0].toFixed(1)} ${a[1].toFixed(1)}L${b[0].toFixed(1)} ${b[1].toFixed(1)}`; }
+  for (let j = 1; j < rows; j++) { const t = j / rows; const a = lerp(tl, bl, t), b = lerp(tr, br, t); d += `M${a[0].toFixed(1)} ${a[1].toFixed(1)}L${b[0].toFixed(1)} ${b[1].toFixed(1)}`; }
+  return `<path d="${d}" class="${cls}"/>`;
+}
+
+export function HeroScene() {
+  const left = [[190, 150], [400, 118], [400, 290], [190, 316]];
+  const right = [[400, 118], [610, 170], [610, 306], [400, 290]];
+  const rows = Array.from({ length: 17 }, (_, i) => {
+    const bx = -260 + i * 70;
+    return `<path d="M400 300L${bx} 470" class="row${i % 2 ? " alt" : ""}"/>`;
+  }).join("");
+  const tree = (x, y, r) => `<g><rect x="${x - 3}" y="${y}" width="6" height="${r * 0.9}" fill="#1b3a24"/><circle cx="${x}" cy="${y}" r="${r}" fill="#1f5a30"/><circle cx="${x - r * 0.5}" cy="${y + r * 0.25}" r="${r * 0.7}" fill="#2a7a3d"/><circle cx="${x + r * 0.5}" cy="${y + r * 0.2}" r="${r * 0.65}" fill="#174a28"/></g>`;
+  return `<figure class="scene" aria-hidden="true">
+<svg viewBox="0 0 720 470" preserveAspectRatio="xMidYMid slice">
+<defs>
+<linearGradient id="hs-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c2a1a"/><stop offset="1" stop-color="#1d4a2c"/></linearGradient>
+<linearGradient id="hs-ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f5a2e"/><stop offset="1" stop-color="#0d2615"/></linearGradient>
+<linearGradient id="hs-gl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2c5a47"/><stop offset="1" stop-color="#0f2a20"/></linearGradient>
+<linearGradient id="hs-gr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b4234"/><stop offset="1" stop-color="#0a1f17"/></linearGradient>
+<radialGradient id="hs-sun" cx="85%" cy="12%" r="40%"><stop offset="0" stop-color="#d8ff7a" stop-opacity=".5"/><stop offset="1" stop-color="#d8ff7a" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="720" height="470" fill="url(#hs-sky)"/><rect width="720" height="470" fill="url(#hs-sun)"/>
+<path d="M0 300Q180 270 400 296T720 280V470H0z" fill="url(#hs-ground)"/>
+${rows}
+${tree(110, 250, 34)}${tree(70, 268, 26)}${tree(690, 240, 38)}${tree(640, 262, 28)}${tree(160, 280, 20)}
+<polygon points="${left.map((q) => q.join(",")).join(" ")}" fill="url(#hs-gl)"/>
+<polygon points="${right.map((q) => q.join(",")).join(" ")}" fill="url(#hs-gr)"/>
+${faceGrid(left, 7, 6, "win")}${faceGrid(right, 7, 5, "win")}
+<polygon points="190,150 400,118 610,170 400,146" fill="#3b6b57"/>
+<g transform="translate(222 188) rotate(-8)"><text class="sign">FIVERS</text></g>
+<path d="M190 316L400 290L610 306L400 330z" fill="#0a1f17" opacity=".7"/>
+${hen(610, 404, 1.15)}
+</svg></figure>`;
+}
+
+function onionArt() {
+  const bulb = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})"><path d="M0 -34q10 -4 8 8M0 -34q-10 -4 -8 8" stroke="#6fbf3a" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-3 -30L-1 -52M3 -30L6 -50" stroke="#7fd04a" stroke-width="3" stroke-linecap="round"/><path d="M0 -30C26 -22 34 8 0 30C-34 8 -26 -22 0 -30z" fill="#a63a5c"/><path d="M-6 -24C-20 -8 -18 12 -4 26" stroke="#d66a8a" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/></g>`;
+  return `<svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="260" fill="#2b2113"/><rect y="150" width="400" height="110" fill="#3a2a17"/>${[60, 150, 240, 330].map((x, i) => bulb(x, 150 + (i % 2) * 8, 1.15)).join("")}${[105, 195, 285].map((x) => bulb(x, 195, 1)).join("")}${[30, 120, 210, 300, 370].map((x) => bulb(x, 235, 0.9)).join("")}</svg>`;
+}
+function hensArt() {
+  return `<svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="260" fill="#3a3a1e"/><rect y="150" width="400" height="110" fill="#4a3d1f"/>${hen(120, 170, 0.9)}${hen(260, 190, 1.05, "#a86a2a", "#7a4519")}${hen(350, 150, 0.6, "#c58a45", "#8a4f1d")}</svg>`;
+}
+
+export function BizPhoto(b, icon) {
+  const file = `${b.slug}.jpg`;
+  const real = existsSync(join(pubDir, "photos", file));
+  const media = real
+    ? `<img src="/photos/${file}" alt="${esc(b.title)}: ${esc(b.short)}" loading="lazy">`
+    : b.slug === "shallot" ? onionArt() : hensArt();
+  return `<a class="photo-card" href="/businesses/">
+  <div class="photo-media">${media}</div>
+  <div class="photo-cap"><span class="ico">${icon}</span><div><strong>${esc(b.title)}</strong><span>${esc(b.short)}</span></div></div>
+</a>`;
+}
+
+export function FocusCard(c) {
+  return `<a class="focus-card" href="${c.href}">
+  <span class="focus-ico">${c.icon}</span>
+  <h3>${esc(c.title)}</h3>
+  <p>${esc(c.text)}</p>
+  <span class="more">Learn more &rarr;</span>
+</a>`;
+}
+
+export function ProjectRow(v) {
+  const label = v.status === "building" ? "In development" : v.status === "live" ? "Live" : "Experiment";
+  return `<a class="proj" href="/ventures/">
+  ${Glyph(v.name)}
+  <div><span class="badges">${v.flagship ? '<span class="flag">Main product</span>' : ""}<span class="status status-${v.status}">${label}</span></span><strong>${esc(v.name)}</strong><span class="muted">${esc(v.short || v.description)}</span></div>
+  <span class="proj-go" aria-hidden="true">&rarr;</span>
+</a>`;
+}
+
+export function LabelLine(t) {
+  return `<span class="label-line">${esc(t)}</span>`;
+}

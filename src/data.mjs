@@ -17,10 +17,10 @@ export const site = {
 
 export const nav = [
   { href: "/", label: "Home" },
-  { href: "/discovery/", label: "Discovery" },
+  { href: "/about/", label: "About" },
+  { href: "/technology/", label: "Technology" },
   { href: "/ventures/", label: "Ventures" },
   { href: "/businesses/", label: "Businesses" },
-  { href: "/about/", label: "About" },
 ];
 
 export const contact = { href: "/about/#contact", label: "Contact" };
@@ -29,6 +29,7 @@ export const contact = { href: "/about/#contact", label: "Contact" };
 export const ventures = [
   {
     name: "Veluna",
+    short: "Digital wedding invitation and event platform.",
     category: "Weddings & events",
     description:
       "AI-assisted digital wedding invitation and event platform: invitations, personal guest links, RSVP, and memories in one place.",
@@ -38,6 +39,7 @@ export const ventures = [
   },
   {
     name: "Financial Tracker",
+    short: "Personal finance platform.",
     category: "Personal finance",
     description:
       "Personal finance platform for budgets, expenses, income, savings goals, and reports, built around Needs, Wants, and Savings.",
@@ -45,13 +47,16 @@ export const ventures = [
   },
   {
     name: "Fivers Digital Office",
+    short: "The AI office. Main product.",
+    flagship: true,
     category: "AI workspace",
     description:
-      "AI-native operating environment for Fivers, where AI agents support day-to-day office work.",
+      "The main product: an AI office where entertainment and development needs alike can produce something, and where Fivers' derivative products are developed.",
     status: "building",
   },
   {
     name: "LinguaFlow",
+    short: "Language learning platform, Japanese first.",
     category: "Education",
     description:
       "Language learning platform with leveled practice. Japanese comes first, with more languages planned.",
@@ -59,6 +64,7 @@ export const ventures = [
   },
   {
     name: "FiveClip",
+    short: "AI-powered content clipping.",
     category: "Media",
     description:
       "AI-powered content clipping venture, starting with gaming and streamer moments. Early MVP stage.",
@@ -66,6 +72,7 @@ export const ventures = [
   },
   {
     name: "Forex Agent",
+    short: "AI market research, demo mode only.",
     category: "Market research",
     description:
       "AI-assisted market research and trading experiment. Runs in demo mode only.",
@@ -136,12 +143,16 @@ export const pipeline = ["Opportunity", "Discovery", "Validation", "Experiment",
 export const businesses = [
   {
     title: "Agriculture",
+    slug: "shallot",
+    short: "Pertanian bawang merah di Brebes",
     tag: "Early stage",
     text: "Onion farming, and occasionally rice, as a family business in Brebes, Central Java.",
     icon: "sprout",
   },
   {
     title: "Layer Chicken",
+    slug: "hens",
+    short: "Peternakan ayam petelur",
     tag: "Early stage",
     text: "A family layer chicken business in Brebes, Central Java, with Afif Firmansyah as the seller of the layer chickens.",
     icon: "egg",
@@ -167,7 +178,15 @@ export const faqs = [
   },
   {
     q: "What does Fivers build?",
-    a: "Digital products such as Veluna and Financial Tracker, products in development such as Fivers Digital Office and LinguaFlow, and experiments such as FiveClip and Forex Agent.",
+    a: "Its main product is Fivers Digital Office, an AI office in development. Around it are digital products such as Veluna and Financial Tracker (live), LinguaFlow (in development), and experiments such as FiveClip and Forex Agent.",
+  },
+  {
+    q: "How did Fivers start?",
+    a: "Fivers started from tinkering with AI and trying to turn everyday activities into products. That led to the idea of an AI office, Fivers Digital Office, where any need, entertainment or development, can produce something.",
+  },
+  {
+    q: "What is Fivers Digital Office?",
+    a: "The main product of Fivers: an AI office, currently in development, where AI agents support work and where derivative products are developed.",
   },
   {
     q: "Where is Fivers based?",
@@ -207,9 +226,9 @@ export const principles = [
 ];
 
 export const story = [
-  { era: "Where it started", title: "IT and AI-assisted office work", text: "Fivers began on the technology side: systems, product thinking, and AI agents that support day-to-day office work." },
-  { era: "What it became", title: "Products and experiments", text: "From that base came digital products such as Veluna and Financial Tracker, with more in development and in testing." },
-  { era: "Where it reaches", title: "Real-world businesses", text: "Alongside software, Fivers is rooted in family businesses in Brebes, Central Java: agriculture and layer chicken." },
+  { era: "Where it started", title: "Tinkering with AI", text: "Fivers began as curiosity: playing with AI and trying to turn everyday activities into products." },
+  { era: "What it became", title: "An AI office", text: "That grew into the idea of an AI office, a platform where any need, whether entertainment or development, can produce something. Fivers Digital Office is that platform and the main product." },
+  { era: "What comes from it", title: "Derivative products and real businesses", text: "Derivative products are developed from the platform, such as Veluna, Financial Tracker, LinguaFlow, and FiveClip. Alongside software, Fivers is rooted in family businesses in Brebes, Central Java." },
 ];
 
 export const pillars = [

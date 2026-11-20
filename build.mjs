@@ -1,6 +1,6 @@
 // Dependency-free static site generator.
 // Usage: SITE_URL=https://your-domain.com node build.mjs
-import { mkdirSync, writeFileSync, copyFileSync, existsSync } from "node:fs";
+import { mkdirSync, writeFileSync, copyFileSync, existsSync, cpSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { site } from "./src/data.mjs";
@@ -42,6 +42,8 @@ console.log("wrote sitemap.xml, robots.txt");
 for (const f of ["favicon.svg", "og-image.png", "founder-mark.jpg"]) {
   if (existsSync(out(`public/${f}`))) copyFileSync(out(`public/${f}`), out(f));
 }
+
+if (existsSync(out("public/photos"))) cpSync(out("public/photos"), out("photos"), { recursive: true });
 
 if (site.url.includes("__SITE_URL__")) {
   console.warn(
