@@ -1,0 +1,13 @@
+{
+  "name": "fivers-corp-website",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Fivers Corp multi-page website. Static output, no dependencies.",
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "node build.mjs && node scripts/check.mjs"
+  },
+  "engines": { "node": ">=18" }
+}
