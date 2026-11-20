@@ -3,7 +3,7 @@
 export const site = {
   name: "Fivers Corp",
   // Set SITE_URL at build time, e.g. SITE_URL=https://example.com npm run build
-  url: (process.env.SITE_URL || "__SITE_URL__").replace(/\/$/, ""),
+  url: (process.env.SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? "https://" + process.env.VERCEL_PROJECT_PRODUCTION_URL : "__SITE_URL__")).replace(/\/$/, ""),
   tagline: "Discover. Build. Operate.",
   founder: {
     name: "Afif Firmansyah",
