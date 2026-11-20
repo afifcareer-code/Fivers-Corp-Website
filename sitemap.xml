@@ -1,32 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>__SITE_URL__/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="__SITE_URL__/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="__SITE_URL__/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="__SITE_URL__/"/>
     <lastmod>2026-11-20</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>__SITE_URL__/about/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="__SITE_URL__/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="__SITE_URL__/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="__SITE_URL__/about/"/>
     <lastmod>2026-11-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>__SITE_URL__/technology/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="__SITE_URL__/technology/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="__SITE_URL__/en/technology/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="__SITE_URL__/technology/"/>
     <lastmod>2026-11-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>__SITE_URL__/discovery/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="__SITE_URL__/discovery/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="__SITE_URL__/en/discovery/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="__SITE_URL__/discovery/"/>
     <lastmod>2026-11-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>__SITE_URL__/ventures/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="__SITE_URL__/ventures/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="__SITE_URL__/en/ventures/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="__SITE_URL__/ventures/"/>
     <lastmod>2026-11-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>__SITE_URL__/businesses/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="__SITE_URL__/businesses/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="__SITE_URL__/en/businesses/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="__SITE_URL__/businesses/"/>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>__SITE_URL__/en/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="__SITE_URL__/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="__SITE_URL__/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="__SITE_URL__/"/>
+    <lastmod>2026-11-20</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>__SITE_URL__/en/about/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="__SITE_URL__/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="__SITE_URL__/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="__SITE_URL__/about/"/>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>__SITE_URL__/en/technology/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="__SITE_URL__/technology/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="__SITE_URL__/en/technology/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="__SITE_URL__/technology/"/>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>__SITE_URL__/en/discovery/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="__SITE_URL__/discovery/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="__SITE_URL__/en/discovery/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="__SITE_URL__/discovery/"/>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>__SITE_URL__/en/ventures/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="__SITE_URL__/ventures/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="__SITE_URL__/en/ventures/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="__SITE_URL__/ventures/"/>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>__SITE_URL__/en/businesses/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="__SITE_URL__/businesses/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="__SITE_URL__/en/businesses/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="__SITE_URL__/businesses/"/>
     <lastmod>2026-11-20</lastmod>
     <priority>0.8</priority>
   </url>

@@ -17,6 +17,17 @@
     });
   }
 
+  // Theme toggle (initial theme is set inline in <head>)
+  var tt = document.querySelector("[data-theme-toggle]");
+  if (tt) {
+    tt.addEventListener("click", function () {
+      var root = document.documentElement;
+      var next = root.dataset.theme === "light" ? "dark" : "light";
+      root.dataset.theme = next;
+      try { localStorage.setItem("fivers-theme", next); } catch (e) {}
+    });
+  }
+
   // Venture status filter (progressive enhancement)
   var bar = document.querySelector("[data-filters]");
   if (bar) {

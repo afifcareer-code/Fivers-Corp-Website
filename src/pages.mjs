@@ -97,9 +97,9 @@ function home() {
   const hero = PageHero({
     cls: "hero-home",
     eyebrow: "Fivers Corp",
-    titleHtml: 'Dari kantor AI sampai <em>ladang</em> dan <em>kandang</em>.',
+    titleHtml: 'From tinkering with <em>AI</em>, to an <em>AI office</em>, to the <em>field</em> and the <em>coop</em>.',
     subtitle: "Technology, AI, Digital Products & Real Businesses.",
-    lead: "Fivers Corp adalah perusahaan yang menggabungkan teknologi modern dengan bisnis nyata di dunia.",
+    lead: "Fivers Corp started from tinkering with AI and turning everyday activities into products. That became an AI office as the main product, where derivative products are developed, and now real-world businesses in Brebes too.",
     lead2: "An AI-native venture studio: Discover. Build. Operate.",
     ctas: [
       { label: "Explore Technology", href: "/technology/", primary: true },
@@ -111,7 +111,7 @@ function home() {
   const focus = wrap(
     `<div class="side-layout">
       <div class="side-head">${LabelLine("Our Focus")}<h2 class="title" id="h-focus">Build for <em>Real Impact</em></h2>
-        <p class="muted">Fivers mengembangkan solusi teknologi, produk digital, dan menjalankan bisnis nyata untuk menciptakan dampak jangka panjang.</p></div>
+        <p class="muted">Fivers develops technology solutions and digital products, and runs real-world businesses, to create long-term impact.</p></div>
       <div class="focus-grid">
         ${FocusCard({ href: "/technology/", icon: iconSvg.chip, title: "Technology", text: "AI, software and digital solutions" })}
         ${FocusCard({ href: "/ventures/", icon: iconSvg.rocket, title: "Ventures", text: "Digital products and experiments" })}
@@ -133,7 +133,7 @@ function home() {
   const real = wrap(
     `<div class="side-layout">
       <div class="side-head">${LabelLine("Our Businesses")}<h2 class="title" id="h-biz">Beyond Software. <em>Into the Real World.</em></h2>
-        <p class="muted">Fivers juga menjalankan bisnis nyata di Brebes, Jawa Tengah, mulai dari pertanian hingga peternakan ayam petelur.</p>
+        <p class="muted">Fivers also runs real-world businesses in Brebes, Central Java, from farming to layer chickens.</p>
         <a class="btn primary" href="/businesses/">Explore Businesses &rarr;</a></div>
       <div class="photo-grid">${BizPhoto(businesses[0], iconSvg.sprout)}${BizPhoto(businesses[1], iconSvg.egg)}</div>
     </div>`, "", "h-biz"
@@ -301,7 +301,7 @@ function businessesPage() {
   const cards = wrap(
     `${SectionHeader({ eyebrow: "Today", warm: true, title: "Two family businesses, as they are.", id: "h-two" })}
     <div class="bizpanels">
-      ${panel(businesses[0], ["Onion", "Occasionally rice", "Family business"], false)}
+      ${panel(businesses[0], ["Shallot", "Occasionally rice", "Family business"], false)}
       ${panel(businesses[1], ["Layer chicken", "Seller: Afif Firmansyah", "Family business"], true)}
     </div>
     ${LocationStrip(location)}`,
@@ -331,7 +331,7 @@ function businessesPage() {
     meta: {
       title: "Fivers Businesses — Beyond Software",
       description:
-        "Fivers Corp also operates early-stage family businesses in Brebes, Central Java: agriculture (onion, occasionally rice) and layer chicken.",
+        "Fivers Corp also operates early-stage family businesses in Brebes, Central Java: agriculture (shallot, occasionally rice) and layer chicken.",
     },
     body: [hero, cards, why, cta].join("\n"),
     jsonld: graph(crumbLd("Businesses", "/businesses/")),

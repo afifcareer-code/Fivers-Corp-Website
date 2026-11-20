@@ -162,35 +162,54 @@ function faceGrid(p, cols, rows, cls) {
   return `<path d="${d}" class="${cls}"/>`;
 }
 
+const journeySteps = [
+  { n: 1, t: "Tinkering with AI", d: "It began with curiosity: playing with AI." },
+  { n: 2, t: "Into products", d: "Everyday activities become products." },
+  { n: 3, t: "The AI office", d: "Fivers Digital Office: the main product, where derivative products are born.", main: true },
+  { n: 4, t: "Field & coop", d: "Family businesses in Brebes, Central Java.", real: true },
+];
+
+function curve(pts) {
+  let d = `M${pts[0][0]} ${pts[0][1]}`;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+    const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+    const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+    d += `C${c1[0].toFixed(1)} ${c1[1].toFixed(1)} ${c2[0].toFixed(1)} ${c2[1].toFixed(1)} ${p2[0]} ${p2[1]}`;
+  }
+  return d;
+}
+
 export function HeroScene() {
-  const left = [[190, 150], [400, 118], [400, 290], [190, 316]];
-  const right = [[400, 118], [610, 170], [610, 306], [400, 290]];
-  const rows = Array.from({ length: 17 }, (_, i) => {
-    const bx = -260 + i * 70;
-    return `<path d="M400 300L${bx} 470" class="row${i % 2 ? " alt" : ""}"/>`;
+  const nodes = [[95, 330], [265, 235], [440, 150], [610, 285]];
+  const rows = Array.from({ length: 13 }, (_, i) => `<path d="M560 330L${200 + i * 62} 470" class="row${i % 2 ? " alt" : ""}"/>`).join("");
+  const icon = [
+    `<path d="M0 -15l4 11 11 4-11 4-4 11-4-11-11-4 11-4z" fill="#C5F03C"/>`,
+    `<g fill="none" stroke="#C5F03C" stroke-width="2.4"><rect x="-14" y="-14" width="11" height="11" rx="3"/><rect x="3" y="-14" width="11" height="11" rx="3"/><rect x="-14" y="3" width="11" height="11" rx="3"/><rect x="3" y="3" width="11" height="11" rx="3" fill="#C5F03C"/></g>`,
+    `<g><path d="M-18 14V-8l16-5 20 6v21z" fill="#0f2a20" stroke="#C5F03C" stroke-width="2.4" stroke-linejoin="round"/><path d="M-8 -2h4M2 -2h4M-8 5h4M2 5h4M12 0h2M12 6h2" stroke="#C5F03C" stroke-width="2.2" stroke-linecap="round"/></g>`,
+    `<g fill="none" stroke="#C5F03C" stroke-width="2.4" stroke-linecap="round"><path d="M0 16V-2"/><path d="M0 -2c0-8 6-13 15-13 0 9-6 14-15 13z"/><path d="M0 6c0-6-4-10-12-10 0 7 4 11 12 10z"/></g>`,
+  ];
+  const nodeSvg = nodes.map(([x, y], i) => {
+    const main = journeySteps[i].main;
+    const r = main ? 44 : 34;
+    return `<g transform="translate(${x} ${y})"><circle r="${r + 10}" fill="${main ? "#C5F03C" : "#2f4a38"}" opacity="${main ? ".14" : ".25"}"/><circle r="${r}" fill="#0f1d14" stroke="${main ? "#C5F03C" : "#3f7a52"}" stroke-width="${main ? 3 : 2}"/><g transform="scale(${main ? 1.25 : 1})">${icon[i]}</g><g transform="translate(${r * 0.72} ${-r * 0.72})"><circle r="13" fill="#C5F03C"/><text y="5" text-anchor="middle" class="num">${i + 1}</text></g></g>`;
   }).join("");
-  const tree = (x, y, r) => `<g><rect x="${x - 3}" y="${y}" width="6" height="${r * 0.9}" fill="#1b3a24"/><circle cx="${x}" cy="${y}" r="${r}" fill="#1f5a30"/><circle cx="${x - r * 0.5}" cy="${y + r * 0.25}" r="${r * 0.7}" fill="#2a7a3d"/><circle cx="${x + r * 0.5}" cy="${y + r * 0.2}" r="${r * 0.65}" fill="#174a28"/></g>`;
-  return `<figure class="scene" aria-hidden="true">
-<svg viewBox="0 0 720 470" preserveAspectRatio="xMidYMid slice">
+  const list = journeySteps.map((j) => `<li${j.main ? ' class="main"' : ""}><span class="jn">${j.n}</span><div><strong>${esc(j.t)}</strong><span>${esc(j.d)}</span></div></li>`).join("");
+  return `<figure class="scene">
+<svg viewBox="0 0 720 470" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
 <defs>
-<linearGradient id="hs-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c2a1a"/><stop offset="1" stop-color="#1d4a2c"/></linearGradient>
-<linearGradient id="hs-ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f5a2e"/><stop offset="1" stop-color="#0d2615"/></linearGradient>
-<linearGradient id="hs-gl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2c5a47"/><stop offset="1" stop-color="#0f2a20"/></linearGradient>
-<linearGradient id="hs-gr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b4234"/><stop offset="1" stop-color="#0a1f17"/></linearGradient>
-<radialGradient id="hs-sun" cx="85%" cy="12%" r="40%"><stop offset="0" stop-color="#d8ff7a" stop-opacity=".5"/><stop offset="1" stop-color="#d8ff7a" stop-opacity="0"/></radialGradient>
+<linearGradient id="hs-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b2417"/><stop offset="1" stop-color="#143823"/></linearGradient>
+<linearGradient id="hs-ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c5029"/><stop offset="1" stop-color="#0b2113"/></linearGradient>
+<radialGradient id="hs-sun" cx="55%" cy="22%" r="40%"><stop offset="0" stop-color="#d8ff7a" stop-opacity=".28"/><stop offset="1" stop-color="#d8ff7a" stop-opacity="0"/></radialGradient>
 </defs>
 <rect width="720" height="470" fill="url(#hs-sky)"/><rect width="720" height="470" fill="url(#hs-sun)"/>
-<path d="M0 300Q180 270 400 296T720 280V470H0z" fill="url(#hs-ground)"/>
+<path d="M0 372Q200 340 420 368T720 350V470H0z" fill="url(#hs-ground)"/>
 ${rows}
-${tree(110, 250, 34)}${tree(70, 268, 26)}${tree(690, 240, 38)}${tree(640, 262, 28)}${tree(160, 280, 20)}
-<polygon points="${left.map((q) => q.join(",")).join(" ")}" fill="url(#hs-gl)"/>
-<polygon points="${right.map((q) => q.join(",")).join(" ")}" fill="url(#hs-gr)"/>
-${faceGrid(left, 7, 6, "win")}${faceGrid(right, 7, 5, "win")}
-<polygon points="190,150 400,118 610,170 400,146" fill="#3b6b57"/>
-<g transform="translate(222 188) rotate(-8)"><text class="sign">FIVERS</text></g>
-<path d="M190 316L400 290L610 306L400 330z" fill="#0a1f17" opacity=".7"/>
-${hen(610, 404, 1.15)}
-</svg></figure>`;
+<path d="${curve(nodes)}" fill="none" stroke="#C5F03C" stroke-width="3" stroke-dasharray="3 10" stroke-linecap="round"/>
+${nodeSvg}
+${hen(640, 428, 0.78)}
+</svg>
+<ol class="journey">${list}</ol></figure>`;
 }
 
 function onionArt() {

@@ -144,15 +144,15 @@ export const businesses = [
   {
     title: "Agriculture",
     slug: "shallot",
-    short: "Pertanian bawang merah di Brebes",
+    short: "Shallot farming in Brebes",
     tag: "Early stage",
-    text: "Onion farming, and occasionally rice, as a family business in Brebes, Central Java.",
+    text: "Shallot farming, and occasionally rice, as a family business in Brebes, Central Java.",
     icon: "sprout",
   },
   {
     title: "Layer Chicken",
     slug: "hens",
-    short: "Peternakan ayam petelur",
+    short: "Layer chicken farming",
     tag: "Early stage",
     text: "A family layer chicken business in Brebes, Central Java, with Afif Firmansyah as the seller of the layer chickens.",
     icon: "egg",
@@ -194,7 +194,7 @@ export const faqs = [
   },
   {
     q: "What are Fivers' businesses?",
-    a: "Two early-stage family businesses in Brebes, Central Java: agriculture (onion farming, and occasionally rice) and layer chicken.",
+    a: "Two early-stage family businesses in Brebes, Central Java: agriculture (shallot farming, and occasionally rice) and layer chicken.",
   },
   {
     q: "How does Fivers use AI?",

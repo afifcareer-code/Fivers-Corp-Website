@@ -17,8 +17,19 @@ const icons = {
 
 /* ---------- Layout ---------- */
 
-export function Layout({ meta, path, body, jsonld = [] }) {
-  const url = `${site.url}${path}`;
+export const LANGS = {
+  id: { prefix: "", locale: "id_ID", name: "Bahasa Indonesia", short: "ID" },
+  en: { prefix: "/en", locale: "en_US", name: "English", short: "EN" },
+};
+export const langPath = (lang, path) => (LANGS[lang].prefix ? (path === "/" ? "/en/" : `/en${path}`) : path);
+
+const flagId = '<svg class="flag-ico" viewBox="0 0 24 16" width="22" height="15" aria-hidden="true"><rect width="24" height="8" fill="#E70011"/><rect y="8" width="24" height="8" fill="#fff"/></svg>';
+const flagEn = '<svg class="flag-ico" viewBox="0 0 24 16" width="22" height="15" aria-hidden="true"><rect width="24" height="16" fill="#012169"/><path d="M0 0l24 16M24 0L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.3"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3"/></svg>';
+
+export function Layout({ meta, path, body, jsonld = [], lang = "id" }) {
+  const L = LANGS[lang];
+  const urlOf = (l) => `${site.url}${langPath(l, path)}`;
+  const url = urlOf(lang);
   const ogImage = `${site.url}/og-image.png`;
   const ld = jsonld
     .map(
@@ -26,20 +37,24 @@ export function Layout({ meta, path, body, jsonld = [] }) {
         `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, "\\u003c")}</script>`
     )
     .join("\n");
-  return `<!doctype html>
-<html lang="en">
+  const html = `<!doctype html>
+<html lang="${lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(meta.title)}</title>
 <meta name="description" content="${esc(meta.description)}">
 <link rel="canonical" href="${esc(url)}">
+<link rel="alternate" hreflang="id" href="${esc(urlOf("id"))}">
+<link rel="alternate" hreflang="en" href="${esc(urlOf("en"))}">
+<link rel="alternate" hreflang="x-default" href="${esc(urlOf("id"))}">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#0D120F">
+<meta name="theme-color" content="#08130d">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${esc(site.name)}">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="${L.locale}">
+<meta property="og:locale:alternate" content="${LANGS[lang === "id" ? "en" : "id"].locale}">
 <meta property="og:title" content="${esc(meta.title)}">
 <meta property="og:description" content="${esc(meta.description)}">
 <meta property="og:url" content="${esc(url)}">
@@ -54,7 +69,7 @@ export function Layout({ meta, path, body, jsonld = [] }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add("js")</script>
+<script>(function(){var d=document.documentElement;try{var t=localStorage.getItem("fivers-theme");if(!t)t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";d.dataset.theme=t}catch(e){d.dataset.theme="dark"}d.classList.add("js")})()</script>
 <link rel="stylesheet" href="/assets/styles.css">
 ${ld}
 </head>
@@ -69,6 +84,22 @@ ${Footer()}
 </body>
 </html>
 `;
+  return html;
+}
+
+/* Prefix root-relative page links for non-default languages. */
+export function prefixLinks(html, lang) {
+  const p = LANGS[lang].prefix;
+  if (!p) return html;
+  return html.replace(/href="(\/[^"]*)"/g, (m, h) =>
+    /^\/(assets|photos|favicon|og-image|founder-mark|en\/)/.test(h) ? m : `href="${h === "/" ? "/en/" : p + h}"`
+  );
+}
+
+export function langSwitch(html, path) {
+  return html
+    .replace(/@@LANG_ID@@/g, langPath("id", path))
+    .replace(/@@LANG_EN@@/g, langPath("en", path));
 }
 
 /* ---------- Navigation ---------- */
@@ -89,6 +120,16 @@ export function Navbar(currentPath) {
     </button>
     <div class="nav-panel" id="nav-panel" data-nav-panel>
       <nav aria-label="Primary"><ul>${links}</ul></nav>
+      <div class="tools">
+        <div class="lang" role="group" aria-label="Language">
+          <a href="@@LANG_ID@@" hreflang="id" lang="id" title="Bahasa Indonesia" data-lang="id">${flagId}<span>ID</span></a>
+          <a href="@@LANG_EN@@" hreflang="en" lang="en" title="English" data-lang="en">${flagEn}<span>EN</span></a>
+        </div>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle light and dark mode">
+          <svg class="i-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>
+          <svg class="i-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg>
+        </button>
+      </div>
       <a class="cta" href="${contact.href}">${esc(contact.label)} <span aria-hidden="true">&rarr;</span></a>
     </div>
   </div>
